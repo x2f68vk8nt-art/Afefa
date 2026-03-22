@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afefa Collection | Women's Boutique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6efe6;
+    --paper: #fffaf4;
+    --text: #2f2018;
+    --muted: #725747;
+    --accent: #9c6b38;
+    --accent-soft: #e8d3ba;
+    --line: rgba(74, 47, 28, 0.12);
+    --shadow: 0 20px 45px rgba(63, 40, 26, 0.12);
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-pill: 999px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(188, 145, 95, 0.24), transparent 28%),
+      linear-gradient(180deg, #fbf6ef 0%, var(--bg) 100%);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  a { color: inherit; }
+
+  .shell {
+    width: min(1160px, calc(100% - 28px));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    padding: 18px 0;
+  }
+
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 20px;
+    background: rgba(255, 250, 244, 0.8);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 12px 28px rgba(63, 40, 26, 0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(145deg, #b4834a, #80531f);
+  }
+
+  .brand-text strong,
+  .hero-copy h1,
+  .section-title h2,
+  .contact-copy h2 {
+    font-family: "Cormorant Garamond", serif;
+  }
+
+  .brand-text strong {
+    display: block;
+    font-size: 1.45rem;
+  }
+
+  .brand-text span {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .button:hover,
+  .floating:hover {
+    transform: translateY(-2px);
+  }
+
+  .button.primary {
+    background: linear-gradient(145deg, #b4834a, #80531f);
+    color: #fff;
+    box-shadow: 0 14px 28px rgba(128, 83, 31, 0.24);
+  }
+
+  .button.secondary {
+    background: rgba(255, 250, 244, 0.92);
+    border: 1px solid var(--line);
+  }
+
+  .hero {
+    padding: 26px 0 18px;
+  }
+
+  .hero-panel {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 26px;
+    padding: 28px;
+    border-radius: 34px;
+    background: linear-gradient(135deg, rgba(255, 250, 244, 0.94), rgba(245, 234, 221, 0.86));
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-copy {
+    padding: 18px 10px;
+  }
+
+  .hero-copy h1 {
+    margin: 18px 0 14px;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 0.94;
+    max-width: 10ch;
+  }
+
+  .hero-copy p,
+  .section-title p,
+  .card p,
+  .contact-copy p {
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .hero-actions,
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .hero-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .hero-points div {
+    padding: 16px;
+    background: rgba(255, 250, 244, 0.8);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+
+  .hero-points strong {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .hero-image,
+  .feature-image,
+  .contact-image {
+    overflow: hidden;
+    border-radius: 28px;
+    box-shadow: 0 18px 36px rgba(63, 40, 26, 0.14);
+  }
+
+  .hero-image img,
+  .feature-image img,
+  .contact-image img,
+  .card-image img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .section-title {
+    margin-bottom: 22px;
+  }
+
+  .section-title h2,
+  .contact-copy h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 3rem);
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    padding: 16px;
+    background: rgba(255, 250, 244, 0.88);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 14px 30px rgba(63, 40, 26, 0.08);
+  }
+
+  .card-image {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: #eadccd;
+  }
+
+  .card-body {
+    padding: 16px 4px 6px;
+  }
+
+  .card h3 {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
+  }
+
+  .inquiry-note {
+    margin: 14px 0 18px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .feature-panel,
+  .contact-panel {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 32px;
+    background: rgba(255, 250, 244, 0.84);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0 22px;
+  }
+
+  .tag-list span {
+    padding: 10px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .tile {
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+  }
+
+  .tile strong {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .tile span,
+  .tile a {
+    color: var(--muted);
+    line-height: 1.7;
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 24px 0 36px;
+    color: var(--muted);
+  }
+
+  .footer-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .floating {
+    position: fixed;
+    right: 16px;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px;
+    border-radius: var(--radius-pill);
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 16px 30px rgba(63, 40, 26, 0.16);
+    transition: transform 180ms ease;
+  }
+
+  .floating.instagram {
+    bottom: 88px;
+    background: linear-gradient(145deg, #fd5949, #d6249f 55%, #285aeb);
+  }
+
+  .floating.whatsapp {
+    bottom: 22px;
+    background: linear-gradient(145deg, #3ad976, #118646);
+  }
+
+  @media (max-width: 980px) {
+    .hero-panel,
+    .feature-panel,
+    .contact-panel,
+    .products {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-points,
+    .contact-info {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .topbar-inner {
+      border-radius: 28px;
+      align-items: flex-start;
+    }
+
+    .hero-copy h1 {
+      max-width: none;
+      font-size: 2.9rem;
+    }
+
+    .hero-panel,
+    .feature-panel,
+    .contact-panel {
+      padding: 18px;
+    }
+
+    .floating {
+      right: 12px;
+      padding: 12px 16px;
+      font-size: 0.92rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div class="brand-text">
+          <strong>Afefa Collection</strong>
+          <span>Women's Pakistani & Indian Clothing Boutique</span>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#products">Collection</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="button primary" href="https://wa.me/18722356956?text=Hi,%20I%20want%20to%20shop%20with%20Afefa%20Collection">WhatsApp Us</a>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="shell hero-panel">
+        <div class="hero-copy">
+          <span class="eyebrow">Women's South Asian Fashion</span>
+          <h1>Beautiful women's outfits for every occasion.</h1>
+          <p>
+            Afefa Collection offers women's Pakistani and Indian clothing with elegant embroidery,
+            graceful silhouettes, and boutique styling for weddings, parties, Eid, and special gatherings.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#products">View Collection</a>
+            <a class="button secondary" href="#contact">Visit Boutique</a>
+          </div>
+          <div class="hero-points">
+            <div>
+              <strong>Women Only</strong>
+              <span>We focus only on women's clothing and dress collections.</span>
+            </div>
+            <div>
+              <strong>Price Inquiry</strong>
+              <span>For prices, please contact us through WhatsApp or Instagram.</span>
+            </div>
+            <div>
+              <strong>Villa Park, IL</strong>
+              <span>Shop in store or message us online for details and availability.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img src="C:/Users/Mibra/Dropbox/My%20PC%20(DESKTOP-CSO9698)/Downloads/Beautiful%20women's%20outfits%20for%20every%20occasion.jpg" alt="Beautiful women's outfit for every occasion">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="shell">
+        <div class="section-title">
+          <h2>Featured Collection</h2>
+          <p>Explore our women's outfits and message us directly for price, sizing, and availability.</p>
+        </div>
+
+        <div class="products">
+          <article class="card">
+            <div class="card-image">
+              <img src="C:/Users/Mibra/Dropbox/My%20PC%20(DESKTOP-CSO9698)/Downloads/Luxury%20Embroidered%20Suit.jpg" alt="Luxury embroidered women's suit">
+            </div>
+            <div class="card-body">
+              <h3>Luxury Embroidered Suit</h3>
+              <p>Elegant women's formal wear with delicate embroidery and classic occasion styling.</p>
+              <div class="inquiry-note">Price available by WhatsApp or Instagram inquiry.</div>
+              <div class="button-row">
+                <a class="button primary" href="https://wa.me/18722356956?text=Hi,%20I%20want%20to%20ask%20about%20the%20Luxury%20Embroidered%20Suit">Ask on WhatsApp</a>
+                <a class="button secondary" href="https://www.instagram.com/afefa_collection">Ask on Instagram</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image">
+              <img src="C:/Users/Mibra/Dropbox/My%20PC%20(DESKTOP-CSO9698)/Downloads/Classic%20Women's%20Suit.jpg" alt="Classic women's suit">
+            </div>
+            <div class="card-body">
+              <h3>Classic Women's Suit</h3>
+              <p>Graceful stitched women's clothing designed for dinners, family events, and elegant day wear.</p>
+              <div class="inquiry-note">Price available by WhatsApp or Instagram inquiry.</div>
+              <div class="button-row">
+                <a class="button primary" href="https://wa.me/18722356956?text=Hi,%20I%20want%20to%20ask%20about%20the%20Classic%20Women's%20Suit">Ask on WhatsApp</a>
+                <a class="button secondary" href="https://www.instagram.com/afefa_collection">Ask on Instagram</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image">
+              <img src="C:/Users/Mibra/Dropbox/My%20PC%20(DESKTOP-CSO9698)/Downloads/Festive%20Women's%20Dress.jfif" alt="Festive women's dress">
+            </div>
+            <div class="card-body">
+              <h3>Festive Women's Dress</h3>
+              <p>Traditional women's wear with rich detail and boutique styling for celebrations and parties.</p>
+              <div class="inquiry-note">Price available by WhatsApp or Instagram inquiry.</div>
+              <div class="button-row">
+                <a class="button primary" href="https://wa.me/18722356956?text=Hi,%20I%20want%20to%20ask%20about%20the%20Festive%20Women's%20Dress">Ask on WhatsApp</a>
+                <a class="button secondary" href="https://www.instagram.com/afefa_collection">Ask on Instagram</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell feature-panel">
+        <div>
+          <div class="section-title">
+            <h2>Women's boutique style</h2>
+            <p>
+              Our collection is focused on women's clothing only, with elegant pieces inspired by soft tones,
+              embroidery, formal dupattas, and standout occasion wear.
+            </p>
+          </div>
+          <div class="tag-list">
+            <span>Women's Party Wear</span>
+            <span>Stitched Suits</span>
+            <span>Formal Collection</span>
+            <span>Eid Looks</span>
+          </div>
+          <a class="button primary" href="https://www.instagram.com/afefa_collection">See More on Instagram</a>
+        </div>
+        <div class="feature-image">
+          <img src="C:/Users/Mibra/Dropbox/My%20PC%20(DESKTOP-CSO9698)/Downloads/Women's%20boutique%20style.jpg" alt="Women's boutique style collection">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="shell contact-panel">
+        <div class="contact-copy">
+          <h2>Contact for price and availability</h2>
+          <p>
+            Message us on WhatsApp or Instagram to ask about prices, sizes, available colors, and current stock.
+            You can also visit our boutique in Villa Park to see women's outfits in person.
+          </p>
+
+          <div class="contact-info">
+            <div class="tile">
+              <strong>Address</strong>
+              <span>1025 W North Ave, Villa Park, IL</span>
+            </div>
+            <div class="tile">
+              <strong>Phone</strong>
+              <a href="tel:+18722356956">(872) 235-6956</a>
+            </div>
+            <div class="tile">
+              <strong>Hours</strong>
+              <span>Open daily at 11:00 AM</span>
+            </div>
+            <div class="tile">
+              <strong>Instagram</strong>
+              <a href="https://www.instagram.com/afefa_collection">@afefa_collection</a>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="button primary" href="https://wa.me/18722356956?text=Hi,%20I%20want%20to%20ask%20about%20prices%20and%20availability">Ask on WhatsApp</a>
+            <a class="button secondary" href="https://www.instagram.com/afefa_collection">Message on Instagram</a>
+          </div>
+        </div>
+
+        <div class="contact-image">
+          <img src="C:/Users/Mibra/Dropbox/My%20PC%20(DESKTOP-CSO9698)/Downloads/Contact%20for%20price%20and%20availability.jpg" alt="Women's contact and availability section look">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-bar">
+      <span>&copy; 2026 Afefa Collection. All rights reserved.</span>
+      <span>Women's Pakistani & Indian clothing boutique in Villa Park, Illinois.</span>
+    </div>
+  </footer>
+
+  <a class="floating instagram" href="https://www.instagram.com/afefa_collection" aria-label="Message on Instagram">Instagram</a>
+  <a class="floating whatsapp" href="https://wa.me/18722356956?text=Hi,%20I%20want%20to%20ask%20about%20prices%20and%20availability" aria-label="Message on WhatsApp">WhatsApp</a>
+</body>
+</html>
